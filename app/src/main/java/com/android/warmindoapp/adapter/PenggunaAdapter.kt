@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.warmindoapp.R
+import com.android.warmindoapp.data.entity.Pengguna
 import com.android.warmindoapp.data.entity.PenggunaRole
 import com.android.warmindoapp.data.entity.Role
 
-class PenggunaAdapter(private var list:List<PenggunaRole>) : RecyclerView.Adapter<PenggunaAdapter.ViewHolder>()   {
+class PenggunaAdapter(private var list:List<Pengguna>) : RecyclerView.Adapter<PenggunaAdapter.ViewHolder>()   {
   private lateinit var dialog:Dialog
 
   fun setDialog(dialog:Dialog){

@@ -3,7 +3,6 @@ package com.android.warmindoapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,13 +24,8 @@ class ManageUserActivity : AppCompatActivity() {
 
         database = AppDatabase.getInstance(applicationContext)
 
-        database.penggunaRoleDao().loadPenggunaAndRole().observe(this, Observer { penggunaRoles ->
-            list.clear()
-            list.addAll(penggunaRoles)
-            adapter.notifyDataSetChanged()
-        })
-
-        adapter = PenggunaAdapter(list)
+        list.addAll(database.penggunaDao().getRoleWithUsers())
+//        adapter = PenggunaAdapter(list)
         Log.i("TESTLIST", list.toString())
 //        recyclerView.adapter = adapter
 //        recyclerView.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)

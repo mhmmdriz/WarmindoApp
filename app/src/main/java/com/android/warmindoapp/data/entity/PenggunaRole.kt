@@ -1,12 +1,13 @@
 package com.android.warmindoapp.data.entity
 
+import androidx.room.Embedded
+import androidx.room.Relation
+
 data class PenggunaRole (
-  var idpengguna: Int? = null,
-  var username: String?,
-  var password: String?,
-  var namapengguna: String?,
-  var idrole: Int?,
-  var status: String?,
-  var foto: String?,
-  var namarole:String?
+  @Embedded val role: Role,
+  @Relation(
+    parentColumn = "idrole",
+    entityColumn = "idrole"
+  )
+  val playlists: List<Pengguna>
 )

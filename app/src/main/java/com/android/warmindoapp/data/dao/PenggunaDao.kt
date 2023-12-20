@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.android.warmindoapp.data.entity.Pengguna
 import com.android.warmindoapp.data.entity.PenggunaRole
@@ -33,4 +34,8 @@ interface PenggunaDao {
       " FROM pengguna, role WHERE pengguna.idrole = role.idrole"
   )
   fun loadPenggunaAndRole(): List<Pengguna>
+
+  @Transaction
+  @Query("SELECT * FROM Role")
+  fun getRoleWithUsers(): List<PenggunaRole>
 }
