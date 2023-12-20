@@ -131,7 +131,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginTop="8dp"
                     android:backgroundTint="@color/primaryColor"
-                    android:text="@string/check" />
+                    android:text="@string/check"
+                    android:onClick="onDataWarungClick" />
 
                 <ImageView
                     android:id="@+id/productImageView"

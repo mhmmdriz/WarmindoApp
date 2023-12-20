@@ -38,6 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
+<<<<<<< HEAD
         <EditText
           android:id="@+id/inputUsername"
           style="@style/Text.Body"
@@ -48,6 +49,20 @@
           android:layout_marginStart="24dp"
           android:layout_marginEnd="24dp"
           android:hint="@string/username"/>
+=======
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputUsername"
+            style="@style/Text.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:maxLines="1"
+            android:inputType="text"
+            android:hint="@string/username" />
+>>>>>>> e4e161a035bf908661d205a47ca2a23f599a79da
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,6 +83,11 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
+<<<<<<< HEAD
+=======
+            android:maxLines="1"
+            android:inputType="text"
+>>>>>>> e4e161a035bf908661d205a47ca2a23f599a79da
             android:hint="@string/password" />
 
     </com.google.android.material.textfield.TextInputLayout>
