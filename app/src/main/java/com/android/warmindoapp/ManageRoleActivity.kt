@@ -22,10 +22,6 @@ import android.util.Log
 class ManageRoleActivity : AppCompatActivity() {
     private lateinit var roleNameEditText: EditText
     private lateinit var addButton: Button
-    private lateinit var roleListView: ListView
-
-    private lateinit var roleList: MutableList<Role>
-    private lateinit var roleAdapter: ArrayAdapter<String>
     private lateinit var  recyclerView: RecyclerView
     private lateinit var adapter: RoleAdapter
     private var list = mutableListOf<Role>()
@@ -34,23 +30,53 @@ class ManageRoleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_role)
         recyclerView = findViewById(R.id.recycler_view)
+        addButton = findViewById(R.id.buttonAddRole)
+        roleNameEditText = findViewById(R.id.editTextRoleName)
 
         database = AppDatabase.getInstance(applicationContext)
+
+        list.addAll(database.roleDao().getAll())
         adapter = RoleAdapter(list)
         list.forEach { Log.d("MyTag", it.toString()) }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(applicationContext, VERTICAL, false)
         recyclerView.addItemDecoration(DividerItemDecoration(applicationContext, VERTICAL))
+        adapter.setDialog(object : RoleAdapter.Dialog{
+            override fun onClick(position: Int) {
+                // membuat dialog view
+                val dialog = AlertDialog.Builder(this@ManageRoleActivity)
+                dialog.setTitle(list[position].role)
+                dialog.setItems(R.array.items_option, DialogInterface.OnClickListener{ dialog, which ->
+                    if (which == 0){
+                        // coding ubah
+                        val intent = Intent(this@ManageRoleActivity, DashboardActivity::class.java)
+                        intent.putExtra("id", list[position].idrole)
+                        startActivity(intent)
+                    }else if(which == 1){
+                        // coding hapus
+                        database.roleDao().delete(list[position])
+                        getData()
+                    }else{
+                        dialog.dismiss()
+                    }
+                })
 
+                //menampilkan dialognya
+                val dialogView = dialog.create()
+                dialogView.show()
+            }
+
+        })
+        addButton.setOnClickListener {
+            onAddRoleClick(it)
+        }
     }
 
     private fun loadRoles() {
         // Load roles from the database and update the list
         val roleDao = AppDatabase.getInstance(this).roleDao()
-        roleList.clear()
-        roleList.addAll(roleDao.getAll())
-
-        roleAdapter.notifyDataSetChanged()
+        list.clear()
+        list.addAll(roleDao.getAll())
     }
 
     fun onAddRoleClick(view: View) {
@@ -72,11 +98,15 @@ class ManageRoleActivity : AppCompatActivity() {
 
             // Reload roles after adding a new one
             loadRoles()
+
+            // Notify the adapter that the dataset has changed
+            adapter.notifyDataSetChanged()
         } else {
             // Display an error message if the role name is empty
             Toast.makeText(this, "Please enter a role name", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     @SuppressLint("NotifyDataSetChanged")
     fun getData(){
