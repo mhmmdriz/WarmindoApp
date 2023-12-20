@@ -36,6 +36,6 @@ interface PenggunaDao {
   fun loadPenggunaAndRole(): List<Pengguna>
 
   @Transaction
-  @Query("SELECT * FROM Role")
+  @Query("SELECT * FROM Pengguna")
   fun getRoleWithUsers(): List<PenggunaRole>
 }
