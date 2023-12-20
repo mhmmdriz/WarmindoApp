@@ -22,7 +22,7 @@ interface PenggunaDao {
   fun getById(idpengguna: Int): Pengguna
 
   @Query("SELECT * FROM pengguna WHERE username = :username")
-  fun getByUsername(username: Int): Pengguna
+  fun getByUsername(username: String): Pengguna
 
   @Update
   fun update(pengguna: Pengguna)

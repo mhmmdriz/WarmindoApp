@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".DashboardActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="32dp">
+
+        <LinearLayout
+            android:id="@+id/top_bar"
+            android:layout_width="326dp"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Text.Title.Bold"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/app_name" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circleImageView"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:gravity="end"
+                    android:src="@drawable/profile" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/welcome"
+            android:layout_width="0dp"
+            android:layout_height="89dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="29dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/top_bar"
+            android:baselineAligned="false">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/Text.Body"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:text="@string/hi_user"
+                    android:lineSpacingExtra="-1sp"
+                    android:gravity="top">
+                </TextView>
+
+                <TextView
+                    style="@style/Text.Body.SemiBold"
+                    android:layout_width="310dp"
+                    android:layout_height="70dp"
+                    android:gravity="top"
+                    android:lineSpacingExtra="1sp"
+                    android:text="@string/welcome_user"
+                    android:textSize="25sp"
+                    android:translationY="-0.38sp">
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bannerWarung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcome">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/dataWarung"
+                    android:layout_width="151dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/data_warung"
+                    android:textSize="18sp"
+                    style="@style/Text.Title.Bold" />
+
+                <Button
+                    android:id="@+id/addToCartButton"
+                    android:layout_width="145dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/primaryColor"
+                    android:text="@string/check" />
+
+                <ImageView
+                    android:id="@+id/productImageView"
+                    android:layout_width="117dp"
+                    android:layout_height="135dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toStartOf="@id/addToCartButton"
+                    android:layout_toEndOf="@id/dataWarung"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/warung" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bannerTransaksi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bannerWarung">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/dataTransaksi"
+                    android:layout_width="151dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/data_transaksi"
+                    android:textSize="18sp"
+                    style="@style/Text.Title.Bold" />
+
+                <Button
+                    android:id="@+id/addToCartButton1"
+                    android:layout_width="145dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/primaryColor"
+                    android:text="@string/check" />
+
+                <ImageView
+                    android:id="@+id/productImageView1"
+                    android:layout_width="117dp"
+                    android:layout_height="135dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toStartOf="@id/addToCartButton1"
+                    android:layout_toEndOf="@id/dataTransaksi"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/transaksi" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bannerManage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bannerTransaksi">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/manageDataStore"
+                    android:layout_width="151dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/manage"
+                    android:textSize="18sp"
+                    style="@style/Text.Title.Bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/manageDataStore"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/manageBtn1"
+                        android:layout_width="145dp"
+                        android:layout_height="45dp"
+                        android:backgroundTint="@color/primaryColor"
+                        android:text="@string/manage_ds1" />
+
+                    <Button
+                        android:id="@+id/manageBtn2"
+                        android:layout_width="145dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="@color/primaryColor"
+                        android:text="@string/manage_ds2"
+                        android:onClick="onManageRoleClick"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/productImageView2"
+                    android:layout_width="117dp"
+                    android:layout_height="135dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toStartOf="@id/manageDataStore"
+                    android:layout_toEndOf="@id/manageDataStore"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/manage" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
