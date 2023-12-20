@@ -244,7 +244,8 @@
                         android:layout_width="145dp"
                         android:layout_height="45dp"
                         android:backgroundTint="@color/primaryColor"
-                        android:text="@string/manage_ds1" />
+                        android:text="@string/manage_ds1"
+                        android:onClick="onManageUserClick"/>
 
                     <Button
                         android:id="@+id/manageBtn2"

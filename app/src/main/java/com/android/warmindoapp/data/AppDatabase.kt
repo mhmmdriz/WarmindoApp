@@ -8,12 +8,14 @@ import androidx.room.RoomDatabase
 import com.android.warmindoapp.data.dao.PenggunaDao
 import com.android.warmindoapp.data.entity.Pengguna
 import com.android.warmindoapp.data.dao.RoleDao
+import com.android.warmindoapp.data.dao.PenggunaroleDao
 import com.android.warmindoapp.data.entity.Role
 
 @Database(entities = [Pengguna::class, Role::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
   abstract fun penggunaDao(): PenggunaDao
   abstract fun roleDao(): RoleDao // Add this line for RoleDao
+  abstract fun penggunaRoleDao(): PenggunaroleDao // Add this line for RoleDao
 
   companion object{
     private var instance: AppDatabase? = null

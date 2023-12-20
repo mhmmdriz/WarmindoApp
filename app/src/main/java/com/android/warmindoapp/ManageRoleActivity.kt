@@ -37,7 +37,7 @@ class ManageRoleActivity : AppCompatActivity() {
 
         list.addAll(database.roleDao().getAll())
         adapter = RoleAdapter(list)
-        list.forEach { Log.d("MyTag", it.toString()) }
+        Log.i("HALO", list.toString())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(applicationContext, VERTICAL, false)
         recyclerView.addItemDecoration(DividerItemDecoration(applicationContext, VERTICAL))

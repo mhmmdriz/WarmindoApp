@@ -15,4 +15,9 @@ class DashboardActivity : AppCompatActivity() {
         val intent = Intent(this, ManageRoleActivity::class.java)
         startActivity(intent)
     }
+
+    fun onManageUserClick(view: View) {
+        val intent = Intent(this, ManageUserActivity::class.java)
+        startActivity(intent)
+    }
 }

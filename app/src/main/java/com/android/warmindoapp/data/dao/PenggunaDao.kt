@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.android.warmindoapp.data.entity.Pengguna
+import com.android.warmindoapp.data.entity.PenggunaRole
 
 @Dao
 interface PenggunaDao {
@@ -26,4 +27,10 @@ interface PenggunaDao {
 
   @Update
   fun update(pengguna: Pengguna)
+
+  @Query(
+    "SELECT idpengguna, username, password, namapengguna, pengguna.idrole, pengguna.status, foto, role" +
+      " FROM pengguna, role WHERE pengguna.idrole = role.idrole"
+  )
+  fun loadPenggunaAndRole(): List<Pengguna>
 }
