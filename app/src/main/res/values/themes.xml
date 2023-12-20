@@ -11,6 +11,9 @@
     <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     <!-- Customize your theme here. -->
     <item name="android:windowBackground">@color/backgroundColor</item>
+
+<!--    buat bg card-->
+    <item name="colorSurface">@color/surfaceColor</item>
   </style>
   <style name="Text">
     <item name="fontFamily">@font/dmsans</item>

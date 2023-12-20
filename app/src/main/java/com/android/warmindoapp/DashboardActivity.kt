@@ -15,4 +15,9 @@ class DashboardActivity : AppCompatActivity() {
         val intent = Intent(this, ManageRoleActivity::class.java)
         startActivity(intent)
     }
+
+    fun onDataWarungClick(view: View) {
+        val intent = Intent(this, ManageWarungActivity::class.java)
+        startActivity(intent)
+    }
 }

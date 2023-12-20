@@ -16,7 +16,7 @@
       android:id="@+id/et_role"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:inputType="textPersonName"
+      android:inputType="text"
       android:hint="Nama Role"/>
   </com.google.android.material.textfield.TextInputLayout>
 
@@ -29,7 +29,7 @@
       android:id="@+id/et_status"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:inputType="textPersonName"
+      android:inputType="text"
       android:hint="Status"/>
   </com.google.android.material.textfield.TextInputLayout>
 
