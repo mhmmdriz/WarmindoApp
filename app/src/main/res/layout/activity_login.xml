@@ -48,6 +48,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:maxLines="1"
+            android:inputType="text"
             android:hint="@string/username" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -69,6 +70,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:maxLines="1"
+            android:inputType="text"
             android:hint="@string/password" />
 
     </com.google.android.material.textfield.TextInputLayout>

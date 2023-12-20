@@ -5,15 +5,21 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.android.warmindoapp.data.dao.MejaDao
 import com.android.warmindoapp.data.dao.PenggunaDao
 import com.android.warmindoapp.data.entity.Pengguna
 import com.android.warmindoapp.data.dao.RoleDao
+import com.android.warmindoapp.data.dao.WarungDao
+import com.android.warmindoapp.data.entity.Meja
 import com.android.warmindoapp.data.entity.Role
+import com.android.warmindoapp.data.entity.Warung
 
-@Database(entities = [Pengguna::class, Role::class], version = 2)
+@Database(entities = [Pengguna::class, Role::class, Warung::class, Meja::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
   abstract fun penggunaDao(): PenggunaDao
-  abstract fun roleDao(): RoleDao // Add this line for RoleDao
+  abstract fun roleDao(): RoleDao
+  abstract fun warungDao(): WarungDao
+  abstract fun mejaDao(): MejaDao
 
   companion object{
     private var instance: AppDatabase? = null
