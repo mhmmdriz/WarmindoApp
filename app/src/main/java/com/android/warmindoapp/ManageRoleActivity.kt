@@ -1,13 +1,23 @@
 package com.android.warmindoapp
 
+import android.annotation.SuppressLint
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.warmindoapp.data.AppDatabase
 import com.android.warmindoapp.data.entity.Role
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
+import com.android.warmindoapp.adapter.RoleAdapter
+import android.util.Log
 
 class ManageRoleActivity : AppCompatActivity() {
     private lateinit var roleNameEditText: EditText
@@ -16,31 +26,22 @@ class ManageRoleActivity : AppCompatActivity() {
 
     private lateinit var roleList: MutableList<Role>
     private lateinit var roleAdapter: ArrayAdapter<String>
-
+    private lateinit var  recyclerView: RecyclerView
+    private lateinit var adapter: RoleAdapter
+    private var list = mutableListOf<Role>()
+    private lateinit var database: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_role)
+        recyclerView = findViewById(R.id.recycler_view)
 
-        roleNameEditText = findViewById(R.id.editTextRoleName)
-        addButton = findViewById(R.id.buttonAddRole)
-        roleListView = findViewById(R.id.listViewRoles)
+        database = AppDatabase.getInstance(applicationContext)
+        adapter = RoleAdapter(list)
+        list.forEach { Log.d("MyTag", it.toString()) }
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(applicationContext, VERTICAL, false)
+        recyclerView.addItemDecoration(DividerItemDecoration(applicationContext, VERTICAL))
 
-        roleList = mutableListOf()
-        roleAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, roleList.map { it.role ?: "" })
-
-        roleListView.adapter = roleAdapter
-
-        loadRoles()
-
-        addButton.setOnClickListener {
-            onAddRoleClick(it)
-        }
-
-        roleListView.setOnItemClickListener { _, _, position, _ ->
-            val selectedRole = roleList[position]
-            // Implement your logic here when a role item is clicked
-            // For example, you can show a dialog for update/delete options
-        }
     }
 
     private fun loadRoles() {
@@ -75,5 +76,12 @@ class ManageRoleActivity : AppCompatActivity() {
             // Display an error message if the role name is empty
             Toast.makeText(this, "Please enter a role name", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun getData(){
+        list.clear()
+        list.addAll(database.roleDao().getAll())
+        adapter.notifyDataSetChanged()
     }
 }
