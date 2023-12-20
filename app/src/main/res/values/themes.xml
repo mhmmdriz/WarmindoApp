@@ -1,9 +1,46 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
   <!-- Base application theme. -->
-  <style name="Base.Theme.WarmindoApp" parent="Theme.Material3.DayNight.NoActionBar">
-    <!-- Customize your light theme here. -->
-    <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+  <style name="Theme.WarmindoApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <!-- Primary brand color. -->
+    <item name="colorPrimary">@color/primaryColor</item>
+    <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
+    <!-- Secondary brand color. -->
+    <item name="colorSecondary">@color/secondaryColor</item>
+    <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
+    <!-- Status bar color. -->
+    <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    <!-- Customize your theme here. -->
+    <item name="android:windowBackground">@color/backgroundColor</item>
   </style>
-
-  <style name="Theme.WarmindoApp" parent="Base.Theme.WarmindoApp" />
+  <style name="Text">
+    <item name="fontFamily">@font/dmsans</item>
+    <item name="android:textColor">@color/TextColor</item>
+  </style>
+  <style name="Text.Title">
+    <item name="fontFamily">@font/dmsans</item>
+    <item name="android:textSize">25sp</item>
+  </style>
+  <style name="Text.Title.Bold">
+    <item name="fontFamily">@font/dmsans_bold</item>
+    <item name="android:textSize">23sp</item>
+  </style>
+  <style name="Text.Header">
+    <item name="fontFamily">@font/dmsans_semibold</item>
+    <item name="android:textSize">20sp</item>
+  </style>
+  <style name="Text.Body">
+    <item name="android:textSize">18sp</item>
+  </style>
+  <style name="Text.Body.SemiBold">
+    <item name="fontFamily">@font/dmsans_semibold</item>
+  </style>
+  <style name="Text.Medium">
+    <item name="android:textSize">16sp</item>
+  </style>
+  <style name="Text.Small">
+    <item name="android:textSize">12sp</item>
+  </style>
+  <style name="Text.ExtraSmall">
+    <item name="android:textSize">10sp</item>
+  </style>
 </resources>

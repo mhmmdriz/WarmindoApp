@@ -1,3 +1,35 @@
 <resources>
-  <string name="app_name">WarmindoApp</string>
+  <string name="app_name">Warmindo</string>
+
+  <string name="username">Username</string>
+  <string name="password">Password</string>
+  <string name="namapengguna">Nama Pengguna</string>
+  <string name="idrole">ID Role</string>
+  <string name="status">Status</string>
+  <string name="foto">Foto</string>
+  <string name="btn_login">Login</string>
+  <string name="btn_register">Register</string>
+  <string name="tv_register">Register Account?</string>
+
+  <string name="hi_user">Hello, Owner</string>
+  <string name="welcome_user">What would you like to do today?</string>
+
+  <string name="data_warung">Data Warung</string>
+  <string name="data_transaksi">Data Transaksi</string>
+  <string name="check">Check</string>
+
+  <string name="manage">Manage Data Store</string>
+  <string name="manage_ds1">Manage User</string>
+  <string name="manage_ds2">Manage Role</string>
+
+  <string name="edit">Edit</string>
+  <string name="user1">User 1</string>
+  <string name="user2">User 2</string>
+  <string name="user3">User 3</string>
+  <string name="user4">User 4</string>
+  <string name="user5">User 5</string>
+
+  <string name="role_name">Role Name</string>
+  <string name="add_role">Add Role</string>
+
 </resources>
