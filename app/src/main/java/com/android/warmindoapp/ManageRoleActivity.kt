@@ -114,4 +114,10 @@ class ManageRoleActivity : AppCompatActivity() {
         list.addAll(database.roleDao().getAll())
         adapter.notifyDataSetChanged()
     }
+
+    override fun onResume() {
+        super.onResume()
+        loadRoles()
+        adapter.notifyDataSetChanged()
+    }
 }

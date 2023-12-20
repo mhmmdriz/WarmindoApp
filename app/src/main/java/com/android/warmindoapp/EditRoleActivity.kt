@@ -8,37 +8,37 @@ import android.widget.Toast
 import com.android.warmindoapp.data.AppDatabase
 import com.android.warmindoapp.data.entity.Role
 class EditRoleActivity :AppCompatActivity(){
-  private lateinit var role : EditText
-  private lateinit var status : EditText
+  private lateinit var etRole : EditText
+  private lateinit var etStatus : EditText
   private lateinit var btnSave : Button
   private lateinit var database : AppDatabase
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_edit_role)
-    role = findViewById(R.id.role)
-    status = findViewById(R.id.status)
-    btnSave = findViewById(R.id.btn_save)
+    etRole = findViewById<EditText>(R.id.et_role)
+    etStatus = findViewById<EditText>(R.id.et_status)
+    btnSave = findViewById<Button>(R.id.btn_save)
     database =  AppDatabase.getInstance(applicationContext)
 
     val intent = intent.extras
     val id = intent?.getInt("id", 0) ?: 0
     if(intent != null){
-      val user = database.roleDao().get(id)
+      val role = database.roleDao().get(id)
 
-      role.setText(user.role)
-      status.setText(user.status)
+      etRole.setText(role.role)
+      etStatus.setText(role.status)
     }
 
     btnSave.setOnClickListener{
-      if(role.text.isNotEmpty() && status.text.isNotEmpty()){
+      if(etRole.text.isNotEmpty() && etStatus.text.isNotEmpty()){
         if (intent != null){
           // coding edit data
           database.roleDao().update(
             Role(
               intent.getInt("id"),
-              role.text.toString(),
-              status.text.toString(),
+              etRole.text.toString(),
+              etStatus.text.toString(),
             )
           )
         } else{
@@ -46,8 +46,8 @@ class EditRoleActivity :AppCompatActivity(){
           database.roleDao().insertAll(
             Role(
               null,
-              role.text.toString(),
-              status.text.toString(),
+              etRole.text.toString(),
+              etStatus.text.toString(),
             )
           )
         }
