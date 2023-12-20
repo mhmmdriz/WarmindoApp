@@ -49,7 +49,7 @@ class ManageRoleActivity : AppCompatActivity() {
                 dialog.setItems(R.array.items_option, DialogInterface.OnClickListener{ dialog, which ->
                     if (which == 0){
                         // coding ubah
-                        val intent = Intent(this@ManageRoleActivity, DashboardActivity::class.java)
+                        val intent = Intent(this@ManageRoleActivity, EditRoleActivity::class.java)
                         intent.putExtra("id", list[position].idrole)
                         startActivity(intent)
                     }else if(which == 1){
