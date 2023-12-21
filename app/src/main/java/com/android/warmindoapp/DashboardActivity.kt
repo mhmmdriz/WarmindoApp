@@ -25,4 +25,9 @@ class DashboardActivity : AppCompatActivity() {
         val intent = Intent(this, ManageWarungActivity::class.java)
         startActivity(intent)
     }
+
+    fun onDataTransaksiClick(view: View) {
+        val intent = Intent(this, ManageTransaksiActivity::class.java)
+        startActivity(intent)
+    }
 }
