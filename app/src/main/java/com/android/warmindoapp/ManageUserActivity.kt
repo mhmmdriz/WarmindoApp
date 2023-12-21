@@ -1,8 +1,10 @@
 package com.android.warmindoapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,21 +40,39 @@ class ManageUserActivity : AppCompatActivity(), RecyclerViewClickListener {
         Log.i("TESTLIST", list.toString())
     }
 
+    private fun loadPengguna() {
+        // Load roles from the database and update the list
+        val penggunaDao = AppDatabase.getInstance(this).penggunaDao()
+        list.clear()
+        list.addAll(penggunaDao.getRoleWithUsers())
+    }
+    override fun onResume() {
+        super.onResume()
+        loadPengguna()
+        adapter.notifyDataSetChanged()
+    }
+
     override fun onEditClick(position: Int) {
         // Menghandle klik pada ImageView Edit pada posisi tertentu
-        // Lakukan sesuatu dengan data pada posisi tersebut
-        showToast("Edit button clicked on position $position")
+        val intent = Intent(this, EditUserActivity::class.java)
+        intent.putExtra("id", list[position].pengguna.idpengguna)
+        startActivity(intent)
     }
 
     override fun onDeleteClick(position: Int) {
         // Menghandle klik pada ImageView Delete pada posisi tertentu
-        // Lakukan sesuatu dengan data pada posisi tersebut
         database.penggunaDao().delete(list[position].pengguna)
         list.removeAt(position)
         adapter.notifyItemRemoved(position)
+        showToast("User Telah dihapus")
     }
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun onClickAddUser(view: View) {
+        val intent = Intent(this, AddUserActivity::class.java)
+        startActivity(intent)
     }
 }
