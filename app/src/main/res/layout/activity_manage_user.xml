@@ -33,14 +33,7 @@
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/app_name" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:gravity="end"
-                android:src="@drawable/profile" />
+                android:text="Manage User" />
         </LinearLayout>
     </LinearLayout>
 
@@ -66,6 +59,7 @@
       android:layout_marginBottom="10dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintBottom_toBottomOf="parent"
-      android:src="@drawable/baseline_add_24" />
+      android:src="@drawable/baseline_add_24"
+      android:onClick="onClickAddUser"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

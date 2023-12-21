@@ -57,9 +57,9 @@ class PenggunaAdapter(private var list:List<PenggunaRole>) : RecyclerView.Adapte
   }
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    holder.tvRole.text = list[position].role.role
+    holder.tvRole.text = "role : " + list[position].role.role
     holder.tvNamaPengguna.text = list[position].pengguna.namapengguna
-    holder.tvUsername.text = list[position].pengguna.username
+    holder.tvUsername.text = "username : " + list[position].pengguna.username
   }
 
 }
