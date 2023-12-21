@@ -53,42 +53,41 @@
         <LinearLayout
             android:id="@+id/welcome"
             android:layout_width="0dp"
-            android:layout_height="89dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="29dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="24dp"
+            android:baselineAligned="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/top_bar"
-            android:baselineAligned="false">
+            app:layout_constraintTop_toBottomOf="@+id/top_bar">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
                 android:orientation="vertical">
+
                 <TextView
                     style="@style/Text.Body"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:text="@string/hi_user"
+                    android:gravity="top"
                     android:lineSpacingExtra="-1sp"
-                    android:gravity="top">
-                </TextView>
+                    android:text="@string/hi_user"></TextView>
 
                 <TextView
                     style="@style/Text.Body.SemiBold"
                     android:layout_width="310dp"
-                    android:layout_height="70dp"
+                    android:layout_height="wrap_content"
                     android:gravity="top"
                     android:lineSpacingExtra="1sp"
                     android:text="@string/welcome_user"
-                    android:textSize="25sp"
-                    android:translationY="-0.38sp">
-                </TextView>
+                    android:translationY="-0.38sp"></TextView>
             </LinearLayout>
         </LinearLayout>
 
@@ -207,11 +206,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:layout_marginTop="25dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="24dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bannerTransaksi">
@@ -223,6 +223,7 @@
 
                 <TextView
                     android:id="@+id/manageDataStore"
+                    style="@style/Text.Title.Bold"
                     android:layout_width="151dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -230,8 +231,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/manage"
-                    android:textSize="18sp"
-                    style="@style/Text.Title.Bold" />
+                    android:textSize="18sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -246,8 +246,8 @@
                         android:layout_width="145dp"
                         android:layout_height="45dp"
                         android:backgroundTint="@color/primaryColor"
-                        android:text="@string/manage_ds1"
-                        android:onClick="onManageUserClick"/>
+                        android:onClick="onManageUserClick"
+                        android:text="@string/manage_ds1" />
 
                     <Button
                         android:id="@+id/manageBtn2"
@@ -255,8 +255,8 @@
                         android:layout_height="45dp"
                         android:layout_marginTop="8dp"
                         android:backgroundTint="@color/primaryColor"
-                        android:text="@string/manage_ds2"
-                        android:onClick="onManageRoleClick"/>
+                        android:onClick="onManageRoleClick"
+                        android:text="@string/manage_ds2" />
                 </LinearLayout>
 
                 <ImageView
@@ -271,7 +271,6 @@
                     android:src="@drawable/manage" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
