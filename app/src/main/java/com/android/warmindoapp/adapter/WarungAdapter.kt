@@ -41,8 +41,7 @@ class WarungAdapter(private var list:List<Warung>) : RecyclerView.Adapter<Warung
 
         // Mengambil URL gambar dari Firebase Storage
         val storageReference = FirebaseStorage.getInstance().reference
-        val pathReference =
-            list[position].gambar?.let { storageReference.child(it) } // Ambil path dari kolom gambar
+        val pathReference = list[position].gambar?.takeIf { it.isNotBlank() }?.let { storageReference.child(it) }
 
         if (pathReference != null) {
             pathReference.downloadUrl.addOnSuccessListener { uri ->
