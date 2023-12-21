@@ -8,6 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.warmindoapp.R
 import com.android.warmindoapp.data.entity.PenggunaRole
 import com.android.warmindoapp.data.entity.Role
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.firebase.storage.FirebaseStorage
+import de.hdodenhof.circleimageview.CircleImageView
 
 class PenggunaAdapter(private var list:List<PenggunaRole>) : RecyclerView.Adapter<PenggunaAdapter.ViewHolder>()   {
   private lateinit var dialog:Dialog
@@ -29,12 +33,14 @@ class PenggunaAdapter(private var list:List<PenggunaRole>) : RecyclerView.Adapte
     var tvUsername: TextView
     var editButton: ImageView
     var deleteButton: ImageView
+    var ivFotoUser: CircleImageView
     init {
       tvRole = view.findViewById(R.id.user_role)
       tvNamaPengguna = view.findViewById(R.id.namaPengguna)
       tvUsername = view.findViewById(R.id.username)
       editButton = view.findViewById(R.id.edit_button)
       deleteButton = view.findViewById(R.id.delete_button)
+      ivFotoUser = view.findViewById(R.id.iv_fotouser)
 
       editButton.setOnClickListener {
         listener?.onEditClick(adapterPosition)
@@ -60,6 +66,23 @@ class PenggunaAdapter(private var list:List<PenggunaRole>) : RecyclerView.Adapte
     holder.tvRole.text = "role : " + list[position].role.role
     holder.tvNamaPengguna.text = list[position].pengguna.namapengguna
     holder.tvUsername.text = "username : " + list[position].pengguna.username
+
+    val storageReference = FirebaseStorage.getInstance().reference
+    val pathReference =
+      list[position].pengguna.foto?.let { storageReference.child(it) } // Ambil path dari kolom foto
+
+    if (pathReference != null) {
+      pathReference.downloadUrl.addOnSuccessListener { uri ->
+        // Uri adalah URL gambar dari Firebase Storage
+        // Gunakan library gambar seperti Glide atau Picasso untuk menampilkan gambar di ImageView
+        Glide.with(holder.itemView.context)
+          .load(uri)
+          .diskCacheStrategy(DiskCacheStrategy.ALL) // Menyimpan gambar ke dalam cache
+          .into(holder.ivFotoUser)
+      }.addOnFailureListener { exception ->
+        // Handle jika terjadi kesalahan dalam mengambil URL gambar
+      }
+    }
   }
 
 }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.warmindoapp.R
 import com.android.warmindoapp.data.entity.Warung
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.firebase.storage.FirebaseStorage
 
 class WarungAdapter(private var list:List<Warung>) : RecyclerView.Adapter<WarungAdapter.ViewHolder>() {
@@ -49,6 +50,7 @@ class WarungAdapter(private var list:List<Warung>) : RecyclerView.Adapter<Warung
                 // Gunakan library gambar seperti Glide atau Picasso untuk menampilkan gambar di ImageView
                 Glide.with(holder.itemView.context)
                     .load(uri)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL) // Menyimpan gambar ke dalam cache
                     .into(holder.gambarwarung)
             }.addOnFailureListener { exception ->
                 // Handle jika terjadi kesalahan dalam mengambil URL gambar
