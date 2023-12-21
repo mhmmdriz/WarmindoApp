@@ -68,20 +68,17 @@ class PenggunaAdapter(private var list:List<PenggunaRole>) : RecyclerView.Adapte
     holder.tvUsername.text = "username : " + list[position].pengguna.username
 
     val storageReference = FirebaseStorage.getInstance().reference
-    val pathReference =
-      list[position].pengguna.foto?.let { storageReference.child(it) } // Ambil path dari kolom foto
+    val pathReference = list[position].pengguna.foto?.takeIf { it.isNotBlank() }?.let { storageReference.child(it) } // Ambil path dari kolom foto
 
-    if (pathReference != null) {
-      pathReference.downloadUrl.addOnSuccessListener { uri ->
+    pathReference?.downloadUrl?.addOnSuccessListener { uri ->
         // Uri adalah URL gambar dari Firebase Storage
         // Gunakan library gambar seperti Glide atau Picasso untuk menampilkan gambar di ImageView
         Glide.with(holder.itemView.context)
           .load(uri)
           .diskCacheStrategy(DiskCacheStrategy.ALL) // Menyimpan gambar ke dalam cache
           .into(holder.ivFotoUser)
-      }.addOnFailureListener { exception ->
+    }?.addOnFailureListener { exception ->
         // Handle jika terjadi kesalahan dalam mengambil URL gambar
-      }
     }
   }
 
