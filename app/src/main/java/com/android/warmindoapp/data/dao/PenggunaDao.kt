@@ -15,7 +15,7 @@ interface PenggunaDao {
   fun getAll(): List<Pengguna>
 
   @Insert
-  fun insertAll(vararg pengguna: Pengguna)
+  fun insertAll(vararg pengguna: Pengguna): List<Long>
 
   @Delete
   fun delete(pengguna: Pengguna)

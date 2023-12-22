@@ -166,6 +166,7 @@ class EditUserActivity : AppCompatActivity() {
             database.penggunaDao().update(
               Pengguna(
                 intent.getInt("id"),
+                pengguna?.idpengguna,
                 username,
                 password,
                 nama,

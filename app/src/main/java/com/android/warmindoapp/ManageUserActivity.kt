@@ -35,7 +35,7 @@ class ManageUserActivity : AppCompatActivity(), RecyclerViewClickListener {
         recyclerView = findViewById(R.id.recycler_view_user) // Menambahkan inisialisasi recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
-        recyclerView.addItemDecoration(DividerItemDecoration(applicationContext, RecyclerView.VERTICAL))
+//        recyclerView.addItemDecoration(DividerItemDecoration(applicationContext, RecyclerView.VERTICAL))
         adapter.setClickListener(this)
         Log.i("TESTLIST", list.toString())
     }

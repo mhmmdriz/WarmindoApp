@@ -16,11 +16,11 @@ import com.android.warmindoapp.data.entity.Role
 import com.android.warmindoapp.data.entity.Transaksi
 import com.android.warmindoapp.data.entity.Warung
 
-@Database(entities = [Pengguna::class, Role::class, Warung::class, Meja::class, Transaksi::class], version = 6)
+@Database(entities = [Pengguna::class, Role::class, Warung::class, Meja::class, Transaksi::class], version = 7)
 
 abstract class AppDatabase : RoomDatabase() {
   abstract fun penggunaDao(): PenggunaDao
-  abstract fun roleDao(): RoleDao // Add this line for RoleDao
+  abstract fun roleDao(): RoleDao
   abstract fun warungDao(): WarungDao
   abstract fun mejaDao(): MejaDao
   abstract fun transaksiDao(): TransaksiDao
