@@ -20,7 +20,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         db = AppDatabase.getInstance(this)
-        val pengguna = Pengguna("WT1202310X1", "pemilik", "password", "Pemilik", 1, "Aktif", "")
+        val pengguna = Pengguna("WT1202310X1", "pemilik", "password", "Pemilik", 1, "Aktif", "images/foto_profil/pemilik.jpg")
         db.penggunaDao().insert(pengguna)
 
         val role = Role(1, "Pemilik", "Aktif")
@@ -35,11 +35,45 @@ class RegisterActivity : AppCompatActivity() {
         val role3 = Role(4, "Petugas Dapur", "Aktif")
         db.roleDao().insertAll(role3)
 
-        val warung1 = Warung("WT1", "Sukses Jaya", "", "")
-        val warung2 = Warung("WT2", "Jaya Abadi", "", "")
+        val warung1 = Warung("WT1", "Sukses Jaya", "", "images/jason-leung-poI7DelFiVA.jpg")
+        val warung2 = Warung("WT2", "Jaya Abadi", "", "images/maria-orlova-oMTlhdFUhdI.jpg")
         db.warungDao().insertAll(warung1)
         db.warungDao().insertAll(warung2)
 
+        val transaksi = Transaksi(
+            idtransaksi = 1,
+            tanggal = "01-12-2023",
+            waktu = "",
+            shift = "",
+            idpengguna = "WT1202312X01",
+            idpelanggan = "pelanggan1",
+            status = "",
+            kodemeja = "",
+            namapelanggan = "pelanggan1",
+            total = "",
+            metodepembayaran = "",
+            totaldiskon = "",
+            idpromosi = ""
+        )
+        db.transaksiDao().insertAll(transaksi)
+
+        val transaksi2 = Transaksi(
+            idtransaksi = 2,
+            tanggal = "05-12-2023",
+            waktu = "",
+            shift = "",
+            idpengguna = "WT1202312X01",
+            idpelanggan = "pelanggan2",
+            status = "",
+            kodemeja = "",
+            namapelanggan = "pelanggan2",
+            total = "",
+            metodepembayaran = "",
+            totaldiskon = "",
+            idpromosi = ""
+        )
+
+        db.transaksiDao().insertAll(transaksi2)
     }
 
 }
