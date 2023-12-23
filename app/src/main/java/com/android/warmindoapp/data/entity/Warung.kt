@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 
 @Entity(indices = [Index(value = ["namawarung"], unique = true)])
 data class Warung (
-    @PrimaryKey(autoGenerate = true) var idwarung: Int? = null,
+    @PrimaryKey(autoGenerate = false) var idwarung: String,
     @ColumnInfo(name = "namawarung") var namawarung: String?,
     @ColumnInfo(name = "logo") var logo: String?,
     @ColumnInfo(name = "gambar") var gambar: String?,
