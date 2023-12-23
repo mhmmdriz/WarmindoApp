@@ -34,8 +34,8 @@ class RegisterActivity : AppCompatActivity() {
             if (ValidationUtils.isTextNotEmpty(username)) {
                 val existingUser: Pengguna? = db.penggunaDao().getByUsername(username)
                 if (existingUser == null) {
-                    val pengguna = Pengguna(username = username, password = password, namapengguna = namapengguna, status = "aktif", idrole = 1, foto = "")
-                    db.penggunaDao().insertAll(pengguna)
+                    val pengguna = Pengguna(idpengguna = "", username = username, password = password, namapengguna = namapengguna, status = "aktif", idrole = 1, foto = "")
+                    db.penggunaDao().insert(pengguna)
                     Toast.makeText(this, "User registered", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "Email is already registered", Toast.LENGTH_SHORT).show()

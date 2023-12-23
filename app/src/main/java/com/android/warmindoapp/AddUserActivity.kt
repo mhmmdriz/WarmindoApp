@@ -16,7 +16,9 @@ class AddUserActivity : AppCompatActivity() {
   private lateinit var database: AppDatabase
   private lateinit var etNama: EditText
   private lateinit var etUsername: EditText
-  private lateinit var etStatus: EditText
+  private lateinit var etTahunMasuk: EditText
+  private lateinit var etBulanMasuk: EditText
+  private lateinit var etKodeWarung: EditText
   private lateinit var spinner: Spinner
   private lateinit var roleId : Array<Int?>
 
@@ -28,6 +30,9 @@ class AddUserActivity : AppCompatActivity() {
 
     etNama = findViewById(R.id.et_nama)
     etUsername = findViewById(R.id.et_username)
+    etTahunMasuk = findViewById(R.id.et_tahunmasuk)
+    etBulanMasuk = findViewById(R.id.et_bulanmasuk)
+    etKodeWarung = findViewById(R.id.et_kodewarung)
     spinner = findViewById(R.id.spinner)
 
     // Inisialisasi Spinner dengan data dari database
@@ -54,6 +59,9 @@ class AddUserActivity : AppCompatActivity() {
     // Mendapatkan data dari inputan pengguna
     val nama = etNama.text.toString()
     val username = etUsername.text.toString()
+    val tahun = etTahunMasuk.text.toString()
+    val bulan = etBulanMasuk.text.toString()
+    val kodeWarung = etKodeWarung.text.toString()
 
     // Mendapatkan ID role yang dipilih dari Spinner
     val selectedRoleId = roleId[spinner.selectedItemPosition]
@@ -65,9 +73,19 @@ class AddUserActivity : AppCompatActivity() {
       val existingUser: Pengguna? = database.penggunaDao().getByUsername(username)
       if (existingUser == null) {
         // Membuat objek User
-        val pengguna = Pengguna(namapengguna = nama, username = username, status="Aktif", idrole = selectedRoleId, foto="", password = "password")
+        var maximumIdPengguna = 0
+
+        maximumIdPengguna = database.penggunaDao().getNomorKaryawanTerbesar(tahun+bulan).toInt()
+
+        val incrementIdPengguna = (maximumIdPengguna + 1).toString()
+
+        val idpengguna = kodeWarung + tahun + bulan + "X" + incrementIdPengguna
+
+        val pengguna = Pengguna(idpengguna=idpengguna, namapengguna = nama, username = username, status="Aktif", idrole = selectedRoleId, foto="", password = "password")
+
         // Memasukkan data ke dalam database
-        database.penggunaDao().insertAll(pengguna)
+        val idList = database.penggunaDao().insert(pengguna)
+
         finish()
         Toast.makeText(this, "User registered", Toast.LENGTH_SHORT).show()
       } else {
