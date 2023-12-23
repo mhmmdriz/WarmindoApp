@@ -7,8 +7,7 @@ import androidx.room.PrimaryKey
 
 @Entity(indices = [Index(value = ["username"], unique = true)])
 data class Pengguna (
-  @PrimaryKey(autoGenerate = true) var id: Int? = null,
-  @ColumnInfo(name = "idpengguna") var idpengguna: String?,
+  @PrimaryKey(autoGenerate = false) var idpengguna: String = "",
   @ColumnInfo(name = "username") var username: String?,
   @ColumnInfo(name = "password") var password: String?,
   @ColumnInfo(name = "namapengguna") var namapengguna: String?,

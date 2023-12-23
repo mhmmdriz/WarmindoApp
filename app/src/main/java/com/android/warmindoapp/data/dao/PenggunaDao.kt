@@ -15,13 +15,13 @@ interface PenggunaDao {
   fun getAll(): List<Pengguna>
 
   @Insert
-  fun insertAll(vararg pengguna: Pengguna): List<Long>
+  fun insert(vararg pengguna: Pengguna): List<Long>
 
   @Delete
   fun delete(pengguna: Pengguna)
 
   @Query("SELECT * FROM pengguna WHERE idpengguna = :idpengguna")
-  fun getById(idpengguna: Int): Pengguna
+  fun getById(idpengguna: String): Pengguna
 
   @Query("SELECT * FROM pengguna WHERE username = :username")
   fun getByUsername(username: String): Pengguna
@@ -34,6 +34,11 @@ interface PenggunaDao {
       " FROM pengguna, role WHERE pengguna.idrole = role.idrole"
   )
   fun loadPenggunaAndRole(): List<Pengguna>
+
+  @Query(
+    "SELECT substr(idpengguna, 11) FROM pengguna WHERE substr(idpengguna, 4, 6) = :stringTahunBulan  ORDER BY substr(idpengguna, 11) DESC LIMIT 1"
+  )
+  fun getNomorKaryawanTerbesar(stringTahunBulan: String): String
 
   @Transaction
   @Query("SELECT * FROM Pengguna")

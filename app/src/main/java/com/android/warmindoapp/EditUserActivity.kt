@@ -64,7 +64,7 @@ class EditUserActivity : AppCompatActivity() {
     setupSpinner()
 
     val intent = intent.extras
-    val id = intent?.getInt("id", 0) ?: 0
+    val id = intent?.getString("id", "") ?: ""
     if(intent != null){
       pengguna = database.penggunaDao().getById(id)
 
@@ -165,8 +165,7 @@ class EditUserActivity : AppCompatActivity() {
           if (intent != null) {
             database.penggunaDao().update(
               Pengguna(
-                intent.getInt("id"),
-                pengguna?.idpengguna,
+                intent.getString("id")!!,
                 username,
                 password,
                 nama,

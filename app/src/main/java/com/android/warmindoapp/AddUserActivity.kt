@@ -73,16 +73,18 @@ class AddUserActivity : AppCompatActivity() {
       val existingUser: Pengguna? = database.penggunaDao().getByUsername(username)
       if (existingUser == null) {
         // Membuat objek User
-        val pengguna = Pengguna(namapengguna = nama, username = username, status="Aktif", idrole = selectedRoleId, foto="", password = "password", idpengguna = "")
+        var maximumIdPengguna = 0
+
+        maximumIdPengguna = database.penggunaDao().getNomorKaryawanTerbesar(tahun+bulan).toInt()
+
+        val incrementIdPengguna = (maximumIdPengguna + 1).toString()
+
+        val idpengguna = kodeWarung + tahun + bulan + "X" + incrementIdPengguna
+
+        val pengguna = Pengguna(idpengguna=idpengguna, namapengguna = nama, username = username, status="Aktif", idrole = selectedRoleId, foto="", password = "password")
 
         // Memasukkan data ke dalam database
-        val idList = database.penggunaDao().insertAll(pengguna)
-        pengguna.id = idList.first().toInt()
-
-        val idpengguna = kodeWarung + tahun + bulan + "X" + pengguna.id.toString()
-        pengguna.idpengguna = idpengguna
-        database.penggunaDao().update(pengguna)
-
+        val idList = database.penggunaDao().insert(pengguna)
 
         finish()
         Toast.makeText(this, "User registered", Toast.LENGTH_SHORT).show()
